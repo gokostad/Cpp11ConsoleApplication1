@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Data Structures">
+      <UniqueIdentifier>{60b69001-7e41-4c58-9c2f-ffbb4de83a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Linked Lists">
+      <UniqueIdentifier>{f8e9d7f8-fc8f-44f7-a41d-b44402a4e4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Linked Lists\Header Files">
+      <UniqueIdentifier>{90bd7b3e-8481-417e-9a1a-a8ac2d953c38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Linked Lists\Source Files">
+      <UniqueIdentifier>{0c2c3201-fd3a-4861-ae94-62ea3b958eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Tree">
+      <UniqueIdentifier>{834af90a-3a91-454c-8519-7598256db5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Tree\Include Files">
+      <UniqueIdentifier>{942c1f47-9683-45a3-8c5c-479fbd383714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structures\Tree\Source Files">
+      <UniqueIdentifier>{384315e8-cd4d-4c1b-8218-580f257c6761}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayingWithTemplate1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayWithFunctorsLambdasFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedListManipulation.h">
+      <Filter>Data Structures\Linked Lists\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleApplication1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayingWithTemplate1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayWithFunctorsLambdasFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedListManipulation.cpp">
+      <Filter>Data Structures\Linked Lists\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

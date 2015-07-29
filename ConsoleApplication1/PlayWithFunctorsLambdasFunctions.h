@@ -1,0 +1,6 @@
+#ifndef __PlayWithFunctorsLambdasFunctions
+#define __PlayWithFunctorsLambdasFunctions
+
+void Main_PlayWithFunctorsLambdasFunctions();
+
+#endif
