@@ -6,8 +6,8 @@
 #include <typeinfo>
 #include <functional>
 
-#include <boost\lambda\lambda.hpp>
-#include <boost\thread\mutex.hpp>
+//#include <boost\lambda\lambda.hpp>
+//#include <boost\thread\mutex.hpp>
 #include "PlayWithFunctorsLambdasFunctions.h"
 
 static const char FILENAME[] = "PlayWithFunctorsLambdasFunctions => ";
@@ -107,6 +107,7 @@ void fill(std::vector<int> &v, T done)
 }
 
 
+/*
 template <class T>
 struct sizeOfReference
 {
@@ -114,6 +115,7 @@ struct sizeOfReference
     int i;
     sizeOfReference(T& rt, int pi) : t(rt) i(pi) {}
 };
+*/
 
 typedef int(*callbackMain)();
 
@@ -143,7 +145,7 @@ void Main_PlayWithFunctorsLambdasFunctions()
     funcCallbackParam([]() -> int { return 2; });
 
 
-    std::cout << sizeof(sizeOfReference<CallableQueue>);
+    //std::cout << sizeof(sizeOfReference<CallableQueue>);
 
     int totalMux = 1;
     std::vector<int> vector;

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <atomic>
 
 #include "LinkedListManipulation.h"
 
@@ -87,7 +88,20 @@ LLNode<INodeVal*> *LinkedListManipulation::pop()
     head = head->next;
     return oldHead;
 }
-
+/*
+void *LinkedListManipulation::insertOnPosition(LLNode<INodeVal*> *llNode, int n)
+{
+    LLNode<INodeVal*> const *top = head;
+    while (top)
+    {
+        if (--n = 0)
+        {
+            //std::atomic_exchange()
+        }
+        top = top->next;
+    }
+}
+*/
 void LinkedListManipulation::remove(LLNode<INodeVal*> const *llNode)
 {
     if (head == nullptr)
@@ -152,6 +166,42 @@ LLNode<INodeVal*> *LinkedListManipulation::reverseLL(LLNode<INodeVal*> *headToRe
         nextNode = nextNextNode;
     }
     return headToReverse;
+}
+
+void LinkedListManipulation::reverseLL(LLNode<INodeVal*> **headToReverse)
+{
+    if (headToReverse == nullptr || (*headToReverse) == nullptr ||
+        (*headToReverse)->next == nullptr)
+        return;
+    LLNode<INodeVal*> *nextNode = (*headToReverse)->next;
+    (*headToReverse)->next = nullptr;
+    while (nextNode != nullptr)
+    {
+        LLNode<INodeVal*> *nextNextNode = nextNode->next;
+        nextNode->next = (*headToReverse);
+        (*headToReverse) = nextNode;
+        nextNode = nextNextNode;
+    }
+}
+
+void LinkedListManipulation::reverseK(LLNode<INodeVal*> **headToReverse, int k)
+{
+    if (headToReverse == nullptr
+        || (*headToReverse) == nullptr
+        || (*headToReverse)->next == nullptr
+        || k <= 1)
+        return;
+    LLNode<INodeVal*> *saveTop = *headToReverse;
+    LLNode<INodeVal*> *nextNode = (*headToReverse)->next;
+    (*headToReverse)->next = nullptr;
+    while (nextNode != nullptr && k-- > 1)
+    {
+        LLNode<INodeVal*> *nextNextNode = nextNode->next;
+        nextNode->next = (*headToReverse);
+        (*headToReverse) = nextNode;
+        nextNode = nextNextNode;
+    }
+    saveTop->next = nextNode;
 }
 
 bool LinkedListManipulation::detectLoop(LLNode<INodeVal*> *head)
@@ -246,8 +296,8 @@ void LinkedListManipulation::mergeExample()
     ll2->push(new LLNode<INodeVal *>(new NodeVal(22)));
     ll2->push(new LLNode<INodeVal *>(new NodeVal(43)));
 
-    LinkedListManipulation *llR = new
-        LinkedListManipulation(nullptr, true);
+    //LinkedListManipulation *llR = new
+    //    LinkedListManipulation(nullptr, true);
 
     LLNode<INodeVal *> *head1 = ll1->head;
     LLNode<INodeVal *> *head2 = ll2->head;
@@ -306,20 +356,28 @@ void LinkedListManipulation::Main_LinkedListManipulation()
     std::cout << "\n------ BOF " << FILENAME << " ----\n";
 
     LinkedListManipulation *ll = new 
-        LinkedListManipulation(new LLNode<INodeVal *>(new NodeVal(1)), true);
-
+        LinkedListManipulation(
+             new LLNode<INodeVal *>(new NodeVal(1)), true);
     ll->push(new LLNode<INodeVal *>(new NodeVal(2)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(3)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(4)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(5)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(5)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(4)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(3)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(2)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(1)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(6)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(7)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(8)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(9)));
     printLL(ll->head);
 
     ll->head = LinkedListManipulation::reverseLL(ll->head);
+
+    printLL(ll->head);
+
+    LinkedListManipulation::reverseLL(&ll->head);
+
+    printLL(ll->head);
+
+    LinkedListManipulation::reverseK(&(ll->head->next->next->next->next->next->next->next), 4);
 
     printLL(ll->head);
 

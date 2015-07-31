@@ -1,5 +1,4 @@
-// ConsoleApplication1.cpp : Defines the entry point for the console application.
-//
+#include <QCoreApplication>
 
 #include "stdafx.h"
 #include <iostream>
@@ -9,9 +8,10 @@
 #include "LinkedListManipulation.h"
 #include "Tree.h"
 
-
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char *argv[])
 {
+    QCoreApplication a(argc, argv);
+
     Main_PlayingWithTemplate1();
 
     Main_PlayWithFunctorsLambdasFunctions();
@@ -22,5 +22,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
     std::cout << "\n\nPress ENTER to exit";
     std::cin.get();
-	return 0;
+
+    return a.exec();
 }

@@ -5,6 +5,7 @@
 class INodeVal
 {
 public:
+    virtual ~INodeVal() {}
     virtual std::string toString() const = 0;
     virtual int get() const = 0;
     virtual void set(int val) = 0;
@@ -17,6 +18,8 @@ public:
     {
         makeString();
     }
+
+    virtual ~NodeVal() {}
 
     int get() const { return value; }
     void set(int val) { value = val; makeString(); }
@@ -38,8 +41,8 @@ class LLNode
 {
 public:
     LLNode(T val, LLNode<T> *nextLL = nullptr) :
-        value(val),
-        next(nextLL)
+        next(nextLL),
+        value(val)
     {}
 
     T getValue() { return value; }
@@ -80,6 +83,10 @@ public:
     static int length(LLNode<INodeVal*> *head);
 
     static LLNode<INodeVal*> *reverseLL(LLNode<INodeVal*> *headToReverse);
+    static void reverseLL(LLNode<INodeVal*> **headToReverse);
+
+    static void reverseK(LLNode<INodeVal*> **headToReverse, int k);
+
     static bool detectLoop(LLNode<INodeVal*> *head);
 
     static LLNode<INodeVal*> *findMiddleElement(LLNode<INodeVal*> *head, bool& isOdd);
