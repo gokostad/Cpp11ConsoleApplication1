@@ -8,6 +8,7 @@
 #include "PlayWithFunctorsLambdasFunctions.h"
 #include "LinkedListManipulation.h"
 #include "Tree.h"
+#include "TNode.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
