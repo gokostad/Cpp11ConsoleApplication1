@@ -77,8 +77,14 @@ public:
     //just remove from the list,  it is not deleted from memory
     void remove(LLNode<INodeVal*> const *llNode);
     LLNode<INodeVal*>* removeNth(int n);
-
     LLNode<INodeVal*>* getNth(int n) const;
+    //insert in already sorted linked list new node in sorted order
+    static void sortedInsert(LLNode<INodeVal*>*& head, LLNode<INodeVal*>* llNode);
+    static void sortedInsert1(LLNode<INodeVal*>*& head, LLNode<INodeVal*>* llNode);
+    static void sortedInsert3(LLNode<INodeVal*>** head, LLNode<INodeVal*>* llNode);
+    static void sortedInsert4(LLNode<INodeVal*>*& head, LLNode<INodeVal*>* llNode);
+    //sort linked list using sortedInsert
+    void insertSort(LLNode<INodeVal*>*& head);
 
     static int length(LLNode<INodeVal*> *head);
 

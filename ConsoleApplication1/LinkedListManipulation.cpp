@@ -151,6 +151,120 @@ LLNode<INodeVal*>* LinkedListManipulation::removeNth(int n)
     return node;
 }
 
+//insert in already sorted linked list new node in sorted order
+void LinkedListManipulation::sortedInsert(LLNode<INodeVal*>*& pHead, LLNode<INodeVal*>* llNode)
+{
+    NodeVal nodeVal(0);
+    LLNode<INodeVal*> top(&nodeVal);
+    top.next = pHead;
+
+    LLNode<INodeVal*>* prevHead = &top;
+
+    while (top.next)
+    {
+        if (top.next->getValue()->get() > llNode->getValue()->get())
+        {
+            LLNode<INodeVal*>* tmp = top.next;
+            prevHead->next = llNode;
+            llNode->next = tmp;
+            if (prevHead == &top)
+                pHead = llNode;
+            break;
+        }
+        prevHead = top.next;
+        top.next = top.next->next;
+    }
+    //if it should be inserted in last position
+    if (!top.next)
+    {
+        prevHead->next = llNode;
+    }
+    if (!pHead)
+        pHead = llNode;
+}
+
+void LinkedListManipulation::sortedInsert1(LLNode<INodeVal*>*& pHead, LLNode<INodeVal*>* llNode)
+{
+    if (!pHead || !pHead->next)
+    {
+        llNode->next = pHead;
+        pHead = llNode;
+        return;
+    }
+
+    LLNode<INodeVal*>* prev = pHead;
+    while (prev->next->getValue()->get() < llNode->getValue()->get())
+    {
+        prev = prev->next;
+    }
+
+    llNode->next = pHead->next;
+    pHead->next = llNode;
+}
+
+
+void LinkedListManipulation::sortedInsert3(LLNode<INodeVal*>** headRef, LLNode<INodeVal*>* newNode)
+{
+    LLNode<INodeVal*>** currentRef = headRef;
+    while (currentRef && (*currentRef)->getValue()->get() < newNode->getValue()->get())
+    {
+        currentRef = &((*currentRef)->next);
+    }
+    newNode->next = *currentRef;
+    *currentRef = newNode;
+}
+
+void LinkedListManipulation::sortedInsert4(LLNode<INodeVal*>*& headRef, LLNode<INodeVal*>* newNode)
+{
+    LLNode<INodeVal*>** currentRef = &headRef;
+    while (currentRef!=NULL && (*currentRef)->getValue()->get() < newNode->getValue()->get())
+    {
+        currentRef = &((*currentRef)->next);
+    }
+    newNode->next = *currentRef;
+    *currentRef = newNode;
+}
+
+//sort linked list using sortedInsert
+void LinkedListManipulation::insertSort(LLNode<INodeVal*>*& head)
+{
+
+}
+
+/*
+void LinkedListManipulation::sortedInsert(LLNode<INodeVal*>* llNode)
+{
+    NodeVal nodeVal(0);
+    LLNode<INodeVal*> top(&nodeVal);
+    top.next = head;
+
+    LLNode<INodeVal*>* prevHead = &top;
+
+    while (head)
+    {
+        LLNode<INodeVal*>* loopHead = top.next;
+        LLNode<INodeVal*>* prevLoopHead = &top;
+
+        while (loopHead != head)
+        {
+            if (loopHead->getValue()->get() > head->getValue()->get())
+            {
+                prevHead->next = head->next;
+                LLNode<INodeVal*>* tmp = head;
+                head = prevHead;
+                tmp->next = loopHead;
+                prevLoopHead->next = tmp;
+                break;
+            }
+            prevLoopHead = loopHead;
+            loopHead = loopHead->next;
+        }
+        prevHead = head;
+        head = head->next;
+    }
+    head = top.next;
+}
+*/
 
 LLNode<INodeVal*> *LinkedListManipulation::reverseLL(LLNode<INodeVal*> *headToReverse)
 {
@@ -363,15 +477,38 @@ void LinkedListManipulation::Main_LinkedListManipulation()
     ll->push(new LLNode<INodeVal *>(new NodeVal(4)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(5)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(5)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(6)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(7)));
-    ll->push(new LLNode<INodeVal *>(new NodeVal(8)));
     ll->push(new LLNode<INodeVal *>(new NodeVal(9)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(11)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(14)));
+    ll->push(new LLNode<INodeVal *>(new NodeVal(20)));
     printLL(ll->head);
+
+/*
+// Test sortedInsert at the top
+    LLNode<INodeVal *> *headT = nullptr;
+    LLNode<INodeVal *> *node1 = new LLNode<INodeVal *>(new NodeVal(23));
+    sortedInsert(headT, node1);
+    printLL(headT);
+
+    LLNode<INodeVal *> *node2 = new LLNode<INodeVal *>(new NodeVal(25));
+    sortedInsert(headT, node2);
+    printLL(headT);
+
+    delete node1;
+    delete node2;
+*/
 
     ll->head = LinkedListManipulation::reverseLL(ll->head);
 
     printLL(ll->head);
+
+
+    ll->sortedInsert2(ll->head, new LLNode<INodeVal *>(new NodeVal(10)));
+    //ll->sortedInsert2(ll->head, new LLNode<INodeVal *>(new NodeVal(0)));
+    //ll->sortedInsert2(ll->head, new LLNode<INodeVal *>(new NodeVal(25)));
+
+    printLL(ll->head);
+
 
     LinkedListManipulation::reverseLL(&ll->head);
 
